@@ -42,8 +42,23 @@ class _HomePageState extends State<HomePage> {
     });
 
     Timer.periodic(
-      Duration(milliseconds: 10),
-      (timer) {},
+      Duration(
+          milliseconds: 10), // 10 milisecond is the moving time of the barriers
+      (timer) {
+        setState(() {
+          barrierX = -0.01;
+        });
+
+        if (detectCollision()) {
+          gameOver = true;
+          timer.cancel();
+          setState(() {
+            if (score > highScore) {
+              highScore = score;
+            }
+          });
+        }
+      },
     );
   }
 
