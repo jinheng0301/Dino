@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   void startGame() {
     gameHasStarted = true;
     Timer.periodic(
-      Duration(milliseconds: 5),
+      Duration(milliseconds: 10),
       // 10 milisecond is the moving time of the barriers
       (timer) {
         height = (gravity * time * time) + (velocity * time);
@@ -106,6 +106,18 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void resetGame() {
+    Navigator.pop(context);
+    setState(() {
+      dinoX = 0;
+      time = 0;
+      initialPosition = dinoY;
+      gameHasStarted = false;
+      barrierX = 1;
+      barrierY = 0;
+    });
+  }
+
   void _showDialog() async {
     await showDialog(
       context: context,
@@ -140,18 +152,6 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
-  }
-
-  void resetGame() {
-    Navigator.pop(context);
-    setState(() {
-      dinoX = 0;
-      time = 0;
-      initialPosition = dinoY;
-      gameHasStarted = false;
-      barrierX = 1;
-      barrierY = 0;
-    });
   }
 
   void updateScore() {}
