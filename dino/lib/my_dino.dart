@@ -18,16 +18,19 @@ class MyDino extends StatelessWidget {
     return Container(
       alignment: Alignment(
         (2 * dinoX + dinoWidth) / (2 - dinoWidth),
-        (2 * dinoY + dinoHeight) / (2 - dinoHeight),
+        1,
       ),
       // x-axis, -1 of the left, 1 of the right
       // y-axis, -1 on the top, 1 of the bottom
 
       child: Container(
+        // height: MediaQuery.of(context).size.height * 2 / 3 * dinoHeight,
+        // width: MediaQuery.of(context).size.width * dinoWidth / 2,
+
         child: Image.asset(
+          height: 50,
+          width: 50,
           'images/dino.png',
-          height: MediaQuery.of(context).size.height * 2 / 3 * dinoHeight,
-          width: MediaQuery.of(context).size.width * dinoWidth / 2,
           fit: BoxFit.fill,
         ),
       ),
